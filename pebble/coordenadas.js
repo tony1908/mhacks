@@ -1,3 +1,8 @@
+/**
+ * Welcome to Pebble.js!
+ *
+ * This is where you write your app.
+ */
 var UI = require('ui');
 var card = new UI.Card({
 });
@@ -11,19 +16,20 @@ navigator.geolocation.getCurrentPosition(function(pos) {
 
 ajax(
   {
-    url: 'https://peaceful-journey-1005.herokuapp.com/message/',
+    url: 'https://morning-brook-3318.herokuapp.com/status/',
     type: 'json',
     method: 'post',
     data: {
-      message: {
-        message: coords.latitude
+      status: {
+        latitude: coords.latitude,
+        longitude: coords.longitude,
+        status: 'emergencia'
   }
     }
   },
   function(data) {
 
-    card.title( coords.latitude);
-    card.body(coords.longitude);
+    card.title( 'Done');
   },
   function(error) {
     console.log( error);
